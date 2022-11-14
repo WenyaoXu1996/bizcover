@@ -1,0 +1,17 @@
+# This is a yml file in which we provide descriptions for both models and columns.
+# You can see how we also apply doc blocks (https://docs.getdbt.com/docs/building-a-dbt-project/documentation#using-docs-blocks) to 
+# write descriptions in one place (via a md file) and apply them through the project.
+# We have also applied tests to every primary key listed in this file.
+# Full documentation: https://docs.getdbt.com/reference/declaring-properties
+
+version: 2
+
+models:
+  - name: BIRD_STRIKES_CURATION
+    description: rename and format bird strikes data
+    columns:
+      - name: RecordID
+        description: primary key of the strike records
+        tests:
+          - unique
+          - not_null
