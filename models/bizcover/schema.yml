@@ -10,7 +10,7 @@ models:
   - name: BIRD_STRIKES_CURATION
     description: rename and format bird strikes data
     columns:
-      - name: RecordID
+      - name: Record ID
         description: primary key of the strike records
         tests:
           - unique
