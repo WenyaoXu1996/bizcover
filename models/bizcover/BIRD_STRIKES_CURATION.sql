@@ -15,7 +15,42 @@ with src as (
 
     select * from {{ source('bizcover_landing', 'BIRD_STRIKES_LANDING') }}
 
+),
+
+renamed AS (
+    select 
+        "Record ID" AS record_id,
+        "Aircraft: Type" AS aircraft_type,
+        "Airport: Name" AS airport_name,
+        "Altitude bin" AS altitude_bin,
+        "Aircraft: Make/Model" AS aircraft_model,
+        "Wildlife: Number struck" AS wildlife_struck,
+        "Wildlife: Number Struck Actual" AS wildlife_struck_actual,
+        "Effect: Impact to flight" AS flight_impact,
+        FLIGHTDATE AS flight_date,
+        "Effect: Indicated Damage" AS indicated_damage,
+        "Aircraft: Airline/Operator" AS airline_operator,
+        "Origin State" AS origin_state,
+        "When: Phase of flight" AS flight_phase,
+        "Conditions: Precipitation" AS precipitation,
+        "Remains of wildlife collected?" AS wildlife_collected,
+        "Remains of wildlife sent to Smithsonian" AS wildlife_sent,
+        remarks AS remarks,
+        "Wildlife: Size" AS wildlife_size,
+        "Conditions: Sky" AS sky_condition,
+        "Wildlife: Species" AS wildlife_species,
+        ISNULL("Pilot warned of birds or wildlife?",'N') AS pilot_warned,
+        "Cost: Total $" AS total_cost,
+        "Feet above ground" AS ground_feet,
+        "Number of people injured" AS people_injured,
+        "Is Aircraft Large?" AS large_aircraft,
+        "var_1" AS aircraft_engines,
+        "filename" 
+    from src
+    where "Record ID" IS NOT NULL
 )
-select 
-    *
-from src
+    
+select
+    * 
+from renamed
+

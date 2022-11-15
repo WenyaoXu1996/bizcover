@@ -10,8 +10,27 @@ models:
   - name: BIRD_STRIKES_CURATION
     description: rename and format bird strikes data
     columns:
-      - name: Record ID
+      - name: record_id
         description: primary key of the strike records
         tests:
           - unique
           - not_null
+      - name: indicated_damage
+        tests:
+          - accepted_values:
+              values: ['No damage','Caused damage']
+      - name: wildlife_collected
+        tests:
+          - not_null 
+          - accepted_values:
+              values: ['True','False']
+      - name: wildlife_sent
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['True','False']  
+      - name: pilot_warned
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Y','N']      

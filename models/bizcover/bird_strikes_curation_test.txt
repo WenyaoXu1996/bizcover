@@ -1,0 +1,21 @@
+--bird_strikes_curation_test.sql
+
+/*
+format_table as (
+    select coalesce(aircraft_type,'Airplane') as aircraft_type,
+    select coalesce(aircraft_number_of_engines,'2') as aircraft_number_of_engines,
+    select coalesce(injured_people,'0') as injured_people,
+
+    from source 
+)
+
+aircraft_type should all be airplane
+for most civil aviation short-distance aircraft generally have 2 engines
+we hope the flight to be safe with no injuries
+select coalesce(aircraft_type,'Airplane') as aircraft_type
+
+select 
+    *
+from renamed
+
+*/
