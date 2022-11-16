@@ -11,115 +11,96 @@ models:
     description: rename and format bird strikes data
     columns:
       - name: record_id
-        description: primary key of the strike records
+        description: "primary key of the strike records"
         tests:
           - unique
           - not_null
       - name: aircraft_type
-        description: type of aircraft such as 'airplane'
+        description: "the type of aircraft such as airplane"
         tests:
-          - not_null
-      - name: aircraft_name
-        description: name of aircraft
+      - name: airport_name
+        description: "name of aircraft"
         tests:
-          - not_null
       - name: altitude_bin
-        description: the range of alititude such as (>1000 ft/<1000 ft)
+        description: "the range of alititude such as (>1000 ft/<1000 ft)"
         tests:
-          - not_null
       - name: aircraft_model
-        description: ID issued by a civil aircraft when it is registered with the civil aviation management agency.
+        description: "ID issued by a civil aircraft when it is registered with the civil aviation management agency."
         tests:
-          - not_null
       - name: wildlife_struck
-        description: the range of number of wildlife struck (1/2-10/over 100)
+        description: "the range of number of wildlife struck (1/2-10/over 100)"
         tests:
-          - not_null
       - name: wildlife_struck_actual
-        description: the actual number of wildlife struck
+        description: "the actual number of wildlife struck"
         tests:
-          - not_null
       - name: flight_impact
-        description: impact to flight such as "engine shut down"
+        description: impact to flight such as "engine shut down" 
         tests:
-          - not_null
       - name: flight_date
         description:  the date of flight
         tests:
-          - not_null
       - name: indicated_damage
+        description:  effect of flight indicated damage
         tests:
           - accepted_values:
               values: ['No damage','Caused damage']
       - name: airline_operator
-        description: airline operating agency or company
+        description: "airline operating agency or company"
         tests:
-          - not_null
       - name: origin_state
-        description: state from which the airplane departs
+        description: "state from which the airplane departs"
         tests:
-          - not_null
       - name: flight_phase
-        description: phase of flight such as:landing/take off/approach
+        description: "phase of flight such as:landing/take off/approach"
         tests:
-          - not_null
       - name: precipitation
         description: whether it rained that day
         tests:
-          - not_null
       - name: wildlife_collected
-        tests: remains of wildlife were collected
-          - not_null 
+        description: remains of wildlife were collected
+        tests: 
           - accepted_values:
-              values: ['True','False']
+              values: ['TRUE','FALSE']
       - name: wildlife_sent
-        tests: remains of wildlife sent to Smithsonian
-          - not_null
+        description: remains of wildlife sent to Smithsonian
+        tests: 
           - accepted_values:
-              values: ['True','False']  
+              values: ['TRUE','FALSE']  
       - name: remarks
         description: some comments of bird strike
         tests:
-          - not_null
       - name: wildlife_size
         description: size of wildlife such as:small/medium/large
         tests:
-          - not_null
       - name: sky_condition
         description: weather conditions such as:no cloud
         tests:
-          - not_null
       - name: wildlife_species
         description: species of wildlife
         tests:
-          - not_null
       - name: pilot_warned
-        tests: did the pilot warn the bird
-          - not_null
+        description: did the pilot warn the bird
+        tests: 
           - accepted_values:
               values: ['Y','N']
       - name: total_cost
         description: economic loss caused by the bird strike
         tests:
-          - not_null
       - name: ground_feet
         description: flight height above ground
         tests:
-          - not_null
       - name: people_injured
         description: number of people get injuried
         tests:
-          - not_null
       - name: large_aircraft
-        tests: is this airplane large
-          - not_null
+        description: is this airplane large
+        tests: 
           - accepted_values:
-              values: ['Y','N'] 
+              values: ['Yes','No'] 
       - name: aircraft_engines
         description:  how many engines does this airplane have
         tests:
-          - not_null
       - name: filename
         description: current record from which file 
         tests:
-          - not_null   
+          

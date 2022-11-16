@@ -20,21 +20,27 @@ with src as (
 renamed AS (
     select 
         "Record ID" AS record_id,
+        convert(int,record_id),
         "Aircraft: Type" AS aircraft_type,
+        coalesce(aircraft_type,'airplane') as aircraft_type,
         "Airport: Name" AS airport_name,
         "Altitude bin" AS altitude_bin,
         "Aircraft: Make/Model" AS aircraft_model,
         "Wildlife: Number struck" AS wildlife_struck,
         "Wildlife: Number Struck Actual" AS wildlife_struck_actual,
+        convert(wildlife_struck_actual,int),
         "Effect: Impact to flight" AS flight_impact,
         flightdate AS flight_date,
+        TO_DATE(left(FLIGHT_DATE,10),'DD/MM/YYYY'),
         "Effect: Indicated Damage" AS indicated_damage,
         "Aircraft: Airline/Operator" AS airline_operator,
         "Origin State" AS origin_state,
         "When: Phase of flight" AS flight_phase,
         "Conditions: Precipitation" AS precipitation,
         "Remains of wildlife collected?" AS wildlife_collected,
+        convert(wildlife_collected,bool),
         "Remains of wildlife sent to Smithsonian" AS wildlife_sent,
+        convert(wildlife_sent,bool),
         remarks AS remarks,
         "Wildlife: Size" AS wildlife_size,
         "Conditions: Sky" AS sky_condition,
@@ -43,11 +49,14 @@ renamed AS (
         "Cost: Total $" AS total_cost,
         "Feet above ground" AS ground_feet,
         "Number of people injured" AS people_injured,
+        convert(people_injured,int),
         "Is Aircraft Large?" AS large_aircraft,
         "var_1" AS aircraft_engines,
         "filename"  
 
     from src
+    where record_id IS NOT NULL
+
 )
 
 
