@@ -27,7 +27,7 @@ renamed AS (
         "Wildlife: Number struck" AS wildlife_struck,
         "Wildlife: Number Struck Actual" AS wildlife_struck_actual,
         "Effect: Impact to flight" AS flight_impact,
-        FLIGHTDATE AS flight_date,
+        flightdate AS flight_date,
         "Effect: Indicated Damage" AS indicated_damage,
         "Aircraft: Airline/Operator" AS airline_operator,
         "Origin State" AS origin_state,
@@ -39,18 +39,19 @@ renamed AS (
         "Wildlife: Size" AS wildlife_size,
         "Conditions: Sky" AS sky_condition,
         "Wildlife: Species" AS wildlife_species,
-        ISNULL("Pilot warned of birds or wildlife?",'N') AS pilot_warned,
+        "Pilot warned of birds or wildlife?" AS pilot_warned,
         "Cost: Total $" AS total_cost,
         "Feet above ground" AS ground_feet,
         "Number of people injured" AS people_injured,
         "Is Aircraft Large?" AS large_aircraft,
         "var_1" AS aircraft_engines,
-        "filename" 
+        "filename"  
+
     from src
-    where "Record ID" IS NOT NULL
 )
+
+
     
 select
     * 
 from renamed
-
