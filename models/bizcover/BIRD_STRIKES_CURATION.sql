@@ -20,9 +20,11 @@ with src as (
 
 renamed AS (
     select 
+        -- update the colun type
         cast("Record ID" as integer) as record_id,
-        "Aircraft: Type" AS aircraft_type,
-        -- coalesce(aircraft_type,'airplane') as aircraft_type,
+        -- missing value use "airplane" to fill
+        coalesce("Aircraft: Type",'airplane') as aircraft_type,
+        -- rename column name standard
         "Airport: Name" AS airport_name,
         "Altitude bin" AS altitude_bin,
         "Aircraft: Make/Model" AS aircraft_model,
@@ -51,7 +53,7 @@ renamed AS (
         "filename"  
 
     from src
-    where record_id IS NOT NULL
+    -- where record_id IS NOT NULL
 
 )
 
